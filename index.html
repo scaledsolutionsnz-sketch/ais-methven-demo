@@ -31,7 +31,7 @@ body { font-family: 'Inter', sans-serif; background: var(--char); color: var(--t
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 6%; height: 74px;
+  padding: 0 6%; height: 90px;
   transition: background .35s, box-shadow .35s;
 }
 nav.scrolled {
@@ -40,12 +40,10 @@ nav.scrolled {
   box-shadow: 0 1px 0 rgba(255,255,255,.06);
 }
 .nav-brand {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.2rem; font-weight: 800;
-  color: #fff; text-decoration: none; letter-spacing: .02em;
-  display: flex; align-items: center; gap: .55rem;
+  color: #fff; text-decoration: none;
+  display: flex; align-items: center;
 }
-.nav-brand-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); flex-shrink: 0; }
+.nav-brand img { width: 33vw; max-width: 360px; min-width: 160px; height: auto; display: block; }
 .nav-links { display: flex; gap: 2.2rem; list-style: none; align-items: center; }
 .nav-links a {
   color: rgba(255,255,255,.62); text-decoration: none;
@@ -62,7 +60,7 @@ nav.scrolled {
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
 .hamburger span { display: block; width: 22px; height: 2px; background: #fff; transition: all .3s; }
 .mob-menu {
-  display: none; position: fixed; top: 74px; left: 0; right: 0;
+  display: none; position: fixed; top: 90px; left: 0; right: 0;
   background: rgba(17,20,24,.98); backdrop-filter: blur(18px);
   z-index: 190; padding: 1.5rem 6%; border-bottom: 1px solid rgba(255,255,255,.06);
 }
@@ -94,7 +92,7 @@ nav.scrolled {
 .hero-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 180px; background: linear-gradient(to top, var(--char), transparent); }
 .hero-inner {
   position: relative; z-index: 2; width: 100%;
-  padding: 74px 6% 5rem;
+  padding: 90px 6% 5rem;
   display: grid; grid-template-columns: 1fr 420px; gap: 3rem; align-items: center;
 }
 .hero-tag {
