@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIS Methven | Truck & Heavy Vehicle Specialists · Methven</title>
+<meta name="description" content="AIS Methven — trusted truck and heavy vehicle repairs in Methven. Diesel engines, WOF, brakes, hydraulics and fleet servicing. Call Barry on 027 306 1193.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --char: #111418;
+  --char2: #1c2128;
+  --char3: #252d38;
+  --char4: #303a47;
+  --orange: #f97316;
+  --orange2: #ea6c0a;
+  --orangeL: #fbbf7a;
+  --text: #f4f4f2;
+  --body: rgba(220,220,215,0.72);
+  --dim: rgba(180,180,175,0.42);
+  --border: rgba(255,255,255,0.08);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--char); color: var(--text); overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 6%; height: 74px;
+  transition: background .35s, box-shadow .35s;
+}
+nav.scrolled {
+  background: rgba(17,20,24,.96);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 1px 0 rgba(255,255,255,.06);
+}
+.nav-brand {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.2rem; font-weight: 800;
+  color: #fff; text-decoration: none; letter-spacing: .02em;
+  display: flex; align-items: center; gap: .55rem;
+}
+.nav-brand-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+.nav-links { display: flex; gap: 2.2rem; list-style: none; align-items: center; }
+.nav-links a {
+  color: rgba(255,255,255,.62); text-decoration: none;
+  font-size: .78rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
+  transition: color .2s;
+}
+.nav-links a:hover { color: #fff; }
+.nav-cta {
+  background: var(--orange) !important; color: #fff !important;
+  padding: .48rem 1.25rem; border-radius: 6px;
+  transition: background .2s, transform .2s !important;
+}
+.nav-cta:hover { background: var(--orange2) !important; transform: translateY(-1px) !important; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: #fff; transition: all .3s; }
+.mob-menu {
+  display: none; position: fixed; top: 74px; left: 0; right: 0;
+  background: rgba(17,20,24,.98); backdrop-filter: blur(18px);
+  z-index: 190; padding: 1.5rem 6%; border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.mob-menu.open { display: block; }
+.mob-menu a {
+  display: block; padding: .75rem 0; color: rgba(255,255,255,.65);
+  text-decoration: none; font-size: .9rem; font-weight: 500;
+  letter-spacing: .08em; text-transform: uppercase;
+  border-bottom: 1px solid rgba(255,255,255,.06); transition: color .2s;
+}
+.mob-menu a:last-child { border: none; background: var(--orange); color: #fff; text-align: center; border-radius: 6px; margin-top: .6rem; padding: .75rem; }
+.mob-menu a:hover { color: #fff; }
+
+/* ── HERO ── */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: url('https://images.unsplash.com/photo-1625047509168-a7026f36de04?w=1800&q=85&fit=crop') center/cover no-repeat;
+  filter: contrast(1.05) saturate(.75);
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(105deg, rgba(17,20,24,.96) 0%, rgba(17,20,24,.82) 48%, rgba(17,20,24,.42) 100%);
+}
+.hero-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 180px; background: linear-gradient(to top, var(--char), transparent); }
+.hero-inner {
+  position: relative; z-index: 2; width: 100%;
+  padding: 74px 6% 5rem;
+  display: grid; grid-template-columns: 1fr 420px; gap: 3rem; align-items: center;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: .55rem;
+  font-size: .7rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--orange); margin-bottom: 1.6rem;
+}
+.hero-tag::before { content: ''; width: 24px; height: 2px; background: var(--orange); }
+h1.hero-h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(3rem, 5.8vw, 5.4rem);
+  font-weight: 800; line-height: .95; color: #fff;
+  letter-spacing: -.02em; margin-bottom: 1.6rem;
+}
+h1.hero-h1 .accent { color: var(--orange); }
+.hero-desc {
+  font-size: 1.05rem; color: rgba(255,255,255,.82);
+  line-height: 1.78; max-width: 440px; margin-bottom: 2.2rem;
+}
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: .45rem;
+  background: var(--orange); color: #fff; text-decoration: none;
+  font-weight: 600; font-size: .9rem; padding: .92rem 2rem;
+  border-radius: 8px; letter-spacing: .04em; transition: all .25s; border: none; cursor: pointer;
+}
+.btn-primary:hover { background: var(--orange2); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(249,115,22,.35); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: .45rem;
+  background: transparent; color: rgba(255,255,255,.75); text-decoration: none;
+  font-weight: 500; font-size: .9rem; padding: .92rem 1.75rem;
+  border-radius: 8px; border: 1px solid rgba(255,255,255,.2); letter-spacing: .04em; transition: all .25s;
+}
+.btn-secondary:hover { border-color: var(--orange); color: var(--orange); }
+.hero-badges { display: flex; gap: .45rem; flex-wrap: wrap; }
+.h-badge {
+  font-size: .68rem; font-weight: 500; letter-spacing: .05em;
+  padding: .28rem .78rem; border-radius: 100px;
+  background: rgba(249,115,22,.08); border: 1px solid rgba(249,115,22,.22); color: var(--orangeL);
+}
+.hero-card {
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+  border-radius: 16px; backdrop-filter: blur(14px); overflow: hidden;
+}
+.hero-card img { width: 100%; height: 260px; object-fit: cover; display: block; }
+.hero-card-body { padding: 1.4rem 1.6rem; }
+.hero-card-body p { font-size: .85rem; color: var(--body); line-height: 1.65; }
+.hero-card-body strong { color: var(--text); }
+
+/* ── MARQUEE ── */
+.marquee {
+  background: rgba(249,115,22,.08); border-top: 1px solid rgba(249,115,22,.12);
+  border-bottom: 1px solid rgba(249,115,22,.12);
+  padding: .85rem 0; overflow: hidden;
+}
+.marquee-inner {
+  display: flex; gap: 3rem; white-space: nowrap;
+  animation: scroll 28s linear infinite; width: max-content;
+}
+.m-item {
+  font-family: 'Syne', sans-serif; font-size: .75rem; font-weight: 600;
+  letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.45);
+  display: inline-flex; align-items: center; gap: .8rem;
+}
+.m-item::after { content: '◆'; font-size: .38rem; color: var(--orange); opacity: .7; }
+@keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ── SECTIONS ── */
+section { padding: 5.5rem 6%; }
+.eyebrow {
+  font-size: .68rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--orange); margin-bottom: .8rem;
+  display: flex; align-items: center; gap: .5rem;
+}
+.eyebrow::before { content: ''; width: 16px; height: 2px; background: var(--orange); }
+.sh {
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: clamp(1.9rem, 3.5vw, 3rem);
+  color: var(--text); letter-spacing: -.02em; line-height: .96; margin-bottom: 1.2rem;
+}
+.sec-body { font-size: .95rem; color: var(--body); line-height: 1.82; max-width: 520px; }
+
+/* ── SERVICES ── */
+#services { background: var(--char2); }
+.services-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3.5rem; }
+.services-img { border-radius: 16px; overflow: hidden; position: relative; }
+.services-img img { width: 100%; height: 420px; object-fit: cover; display: block; filter: saturate(.85); }
+.services-img-badge {
+  position: absolute; bottom: -1rem; left: -1rem;
+  background: var(--orange); color: #fff;
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: 1.1rem; padding: 1rem 1.4rem; border-radius: 12px;
+  line-height: 1.2;
+}
+.services-list { display: flex; flex-direction: column; gap: 1rem; }
+.svc-row {
+  display: flex; align-items: flex-start; gap: 1.1rem;
+  padding: 1.3rem 1.5rem;
+  background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.07);
+  border-radius: 12px; transition: all .28s;
+}
+.svc-row:hover { border-color: rgba(249,115,22,.3); transform: translateX(5px); }
+.svc-icon {
+  width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0;
+  background: rgba(249,115,22,.1); border: 1px solid rgba(249,115,22,.2);
+  display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+}
+.svc-body {}
+.svc-title { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: .3rem; }
+.svc-desc { font-size: .84rem; color: var(--body); line-height: 1.65; }
+
+/* ── GALLERY ── */
+#work { background: var(--char); }
+.gallery-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  grid-template-rows: 280px 220px;
+  gap: 1rem;
+}
+.g-item { border-radius: 14px; overflow: hidden; position: relative; }
+.g-item img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.82); transition: transform .5s; }
+.g-item:hover img { transform: scale(1.04); }
+.g-item:first-child { grid-row: 1 / 3; }
+.g-label {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 1.5rem 1.2rem .9rem;
+  background: linear-gradient(to top, rgba(17,20,24,.85), transparent);
+  font-size: .75rem; font-weight: 600; letter-spacing: .08em;
+  text-transform: uppercase; color: rgba(255,255,255,.8);
+  opacity: 0; transition: opacity .3s;
+}
+.g-item:hover .g-label { opacity: 1; }
+
+/* ── ABOUT STRIP ── */
+#about {
+  background: var(--orange);
+  padding: 4rem 6%;
+}
+.about-strip { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; align-items: center; }
+.about-stat { text-align: center; }
+.about-stat-n {
+  font-family: 'Syne', sans-serif; font-size: 3.2rem; font-weight: 800;
+  color: #fff; line-height: 1; margin-bottom: .3rem;
+}
+.about-stat-l { font-size: .8rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.75); }
+.about-divider { width: 1px; height: 80px; background: rgba(255,255,255,.25); margin: 0 auto; }
+.about-text-col { color: rgba(255,255,255,.92); font-size: .95rem; line-height: 1.78; }
+.about-text-col strong { color: #fff; font-family: 'Syne', sans-serif; font-size: 1.1rem; display: block; margin-bottom: .5rem; }
+
+/* ── REVIEWS ── */
+#reviews { background: var(--char2); }
+.reviews-top { display: grid; grid-template-columns: auto 1fr; gap: 3rem; align-items: center; margin-bottom: 3rem; }
+.g-badge {
+  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px; padding: 1.8rem 2.2rem; text-align: center; min-width: 190px;
+}
+.g-logo-row { display: flex; align-items: center; justify-content: center; gap: .4rem; font-size: .72rem; font-weight: 600; color: var(--dim); margin-bottom: .5rem; }
+.g-score { font-family: 'Syne', sans-serif; font-size: 3.6rem; font-weight: 800; color: var(--text); line-height: 1; }
+.g-stars { display: flex; justify-content: center; gap: 3px; margin: .3rem 0; }
+.g-star { color: #f59e0b; font-size: 1.1rem; }
+.g-count { font-size: .72rem; color: var(--dim); margin-bottom: 1rem; }
+.review-btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .6rem 1.2rem; border-radius: 7px;
+  background: rgba(249,115,22,.1); border: 1px solid rgba(249,115,22,.25);
+  color: var(--orange); font-size: .78rem; font-weight: 600;
+  text-decoration: none; transition: all .25s; cursor: pointer; border: 1px solid rgba(249,115,22,.25);
+  font-family: 'Inter', sans-serif;
+}
+.review-btn:hover { background: rgba(249,115,22,.2); }
+.reviews-intro .eyebrow { margin-bottom: .8rem; }
+.reviews-intro p { font-size: .93rem; color: var(--body); line-height: 1.8; max-width: 420px; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+.rev-card {
+  background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07);
+  border-radius: 14px; padding: 1.6rem; transition: border-color .28s;
+  display: flex; flex-direction: column; gap: .85rem;
+}
+.rev-card:hover { border-color: rgba(249,115,22,.2); }
+.rev-header { display: flex; align-items: center; gap: .75rem; }
+.rev-avatar {
+  width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .85rem; font-weight: 700; color: #fff;
+}
+.rev-name { font-size: .9rem; font-weight: 600; color: var(--text); }
+.rev-stars { display: flex; gap: 2px; }
+.r-star { color: #f59e0b; font-size: .8rem; }
+.rev-text { font-size: .86rem; color: var(--body); line-height: 1.72; font-style: italic; }
+.rev-source { display: flex; align-items: center; gap: .4rem; font-size: .7rem; color: var(--dim); margin-top: auto; }
+.reviews-cta { text-align: center; margin-top: 2.2rem; }
+.see-more {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .7rem 1.6rem; border-radius: 8px;
+  background: transparent; border: 1px solid rgba(255,255,255,.12);
+  color: var(--body); font-size: .84rem; font-weight: 500;
+  text-decoration: none; transition: all .25s; cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+.see-more:hover { border-color: rgba(249,115,22,.35); color: var(--orange); }
+
+/* ── CONTACT ── */
+#contact { background: var(--char); }
+.contact-grid { display: grid; grid-template-columns: 1fr 480px; gap: 5rem; align-items: start; }
+.contact-info .sh { margin-bottom: 1rem; }
+.contact-info p { font-size: .93rem; color: var(--body); line-height: 1.82; margin-bottom: 2rem; max-width: 380px; }
+.contact-items { display: flex; flex-direction: column; gap: 1.1rem; }
+.c-item { display: flex; align-items: flex-start; gap: .9rem; }
+.c-icon {
+  width: 40px; height: 40px; border-radius: 9px; flex-shrink: 0;
+  background: rgba(249,115,22,.1); border: 1px solid rgba(249,115,22,.18);
+  display: flex; align-items: center; justify-content: center; font-size: 1rem;
+}
+.c-label { font-size: .67rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); margin-bottom: .15rem; }
+.c-val { font-size: .92rem; color: var(--text); font-weight: 500; text-decoration: none; transition: color .2s; display: block; }
+.c-val:hover { color: var(--orange); }
+.contact-form-wrap {
+  background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07);
+  border-radius: 18px; padding: 2.4rem;
+}
+.form-title { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--text); margin-bottom: 1.5rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .85rem; }
+.form-group { margin-bottom: .85rem; }
+.form-group label { display: block; font-size: .68rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--dim); margin-bottom: .38rem; }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; padding: .75rem 1rem;
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09);
+  border-radius: 8px; color: var(--text); font-family: 'Inter', sans-serif;
+  font-size: .9rem; outline: none; transition: border-color .2s;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: rgba(180,180,175,.3); }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: rgba(249,115,22,.42); }
+.form-group select option { background: var(--char3); color: var(--text); }
+.form-group textarea { resize: vertical; min-height: 110px; }
+.form-submit {
+  width: 100%; padding: .92rem; background: var(--orange); color: #fff;
+  border: none; border-radius: 8px; font-size: .92rem; font-weight: 600;
+  cursor: pointer; transition: all .25s; margin-top: .3rem; letter-spacing: .04em;
+  font-family: 'Inter', sans-serif;
+}
+.form-submit:hover { background: var(--orange2); transform: translateY(-2px); }
+.form-note { font-size: .74rem; color: var(--dim); text-align: center; margin-top: .75rem; }
+
+/* ── FOOTER ── */
+footer {
+  background: rgba(10,12,16,.98); border-top: 1px solid rgba(255,255,255,.06);
+  padding: 2.5rem 6%; display: grid; grid-template-columns: 1fr auto;
+  align-items: center; gap: 2rem;
+}
+.foot-brand { font-family: 'Syne', sans-serif; font-size: .95rem; font-weight: 800; color: var(--text); margin-bottom: .35rem; }
+.foot-copy { font-size: .73rem; color: var(--dim); }
+.foot-links { display: flex; gap: 1.8rem; }
+.foot-links a { font-size: .73rem; color: var(--dim); text-decoration: none; letter-spacing: .08em; text-transform: uppercase; transition: color .2s; }
+.foot-links a:hover { color: var(--orange); }
+
+/* ── ANIMATIONS ── */
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+.fade-in.visible { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ── */
+@media(max-width: 1000px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-card { display: none; }
+  .services-layout { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .g-item:first-child { grid-row: auto; }
+  .about-strip { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; }
+  .about-divider { width: 80px; height: 1px; }
+  .reviews-top { grid-template-columns: 1fr; gap: 2rem; }
+  .reviews-grid { grid-template-columns: 1fr 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  footer { grid-template-columns: 1fr; text-align: center; }
+  .foot-links { justify-content: center; }
+}
+@media(max-width: 640px) {
+  section { padding: 4rem 5%; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .gallery-grid { grid-template-columns: 1fr; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  h1.hero-h1 { font-size: clamp(2.6rem, 10vw, 3.4rem); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-brand">
+    <span class="nav-brand-dot"></span>
+    AIS Methven
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Our Work</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <a href="#services" onclick="closeMob()">Services</a>
+  <a href="#work" onclick="closeMob()">Our Work</a>
+  <a href="#reviews" onclick="closeMob()">Reviews</a>
+  <a href="#contact" onclick="closeMob()">Get in Touch</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-fade"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">Methven, Canterbury</div>
+      <h1 class="hero-h1">
+        HEAVY<br>
+        VEHICLE<br>
+        <span class="accent">SPECIALISTS.</span>
+      </h1>
+      <p class="hero-desc">
+        Trusted truck and heavy vehicle repairs out of 55 Line Road, Methven. Diesel engines, WOF inspections, brakes, hydraulics — done right, every time.
+      </p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Book a Service →</a>
+        <a href="#services" class="btn-secondary">View Services</a>
+      </div>
+      <div class="hero-badges">
+        <span class="h-badge">Diesel Specialists</span>
+        <span class="h-badge">WOF Inspections</span>
+        <span class="h-badge">Fleet Servicing</span>
+        <span class="h-badge">Methven Based</span>
+      </div>
+    </div>
+    <div class="hero-card">
+      <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&q=80&fit=crop" alt="Truck repair workshop — AIS Methven">
+      <div class="hero-card-body">
+        <p><strong>027 306 1193</strong> — Call Barry directly for bookings, quotes, or breakdowns. Located at 55 Line Road, Methven.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-inner">
+    <span class="m-item">Truck Repairs</span>
+    <span class="m-item">Diesel Engines</span>
+    <span class="m-item">WOF Inspections</span>
+    <span class="m-item">Brake Servicing</span>
+    <span class="m-item">Hydraulic Systems</span>
+    <span class="m-item">Fleet Maintenance</span>
+    <span class="m-item">Agricultural Vehicles</span>
+    <span class="m-item">Emergency Repairs</span>
+    <span class="m-item">Truck Repairs</span>
+    <span class="m-item">Diesel Engines</span>
+    <span class="m-item">WOF Inspections</span>
+    <span class="m-item">Brake Servicing</span>
+    <span class="m-item">Hydraulic Systems</span>
+    <span class="m-item">Fleet Maintenance</span>
+    <span class="m-item">Agricultural Vehicles</span>
+    <span class="m-item">Emergency Repairs</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-layout">
+    <div class="fade-in">
+      <div class="services-img">
+        <img src="https://images.unsplash.com/photo-1590845947698-8924d7409b56?w=900&q=80&fit=crop" alt="Heavy truck mechanical repair — AIS Methven">
+        <div class="services-img-badge">Methven's<br>Go-To Shop</div>
+      </div>
+    </div>
+    <div class="fade-in">
+      <div class="eyebrow">What we do</div>
+      <h2 class="sh">Built for heavy<br>vehicles.</h2>
+      <p class="sec-body" style="margin-bottom:2rem">From a full engine overhaul to a routine WOF — AIS Methven has the tools, the experience, and the knowledge to keep your trucks and heavy vehicles on the road.</p>
+      <div class="services-list">
+        <div class="svc-row">
+          <div class="svc-icon">🔧</div>
+          <div class="svc-body">
+            <div class="svc-title">Diesel Engine Repairs & Overhauls</div>
+            <p class="svc-desc">Full diagnostics, repairs and rebuilds on all diesel engines — trucks, buses, and heavy plant.</p>
+          </div>
+        </div>
+        <div class="svc-row">
+          <div class="svc-icon">✅</div>
+          <div class="svc-body">
+            <div class="svc-title">WOF & COF Inspections</div>
+            <p class="svc-desc">Warrant and Certificate of Fitness inspections carried out efficiently so your fleet stays compliant and on the road.</p>
+          </div>
+        </div>
+        <div class="svc-row">
+          <div class="svc-icon">🛑</div>
+          <div class="svc-body">
+            <div class="svc-title">Brake Systems & Safety Checks</div>
+            <p class="svc-desc">Air brakes, hydraulic brakes, and drum inspections — safety-critical work done to the highest standard.</p>
+          </div>
+        </div>
+        <div class="svc-row">
+          <div class="svc-icon">⚙️</div>
+          <div class="svc-body">
+            <div class="svc-title">Hydraulics & Transmissions</div>
+            <p class="svc-desc">Hydraulic system repairs, pump replacements, and gearbox servicing for trucks and agricultural machinery.</p>
+          </div>
+        </div>
+        <div class="svc-row">
+          <div class="svc-icon">🚛</div>
+          <div class="svc-body">
+            <div class="svc-title">Fleet Servicing & Maintenance</div>
+            <p class="svc-desc">Regular scheduled servicing for business fleets — keeping your vehicles running and minimising downtime.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="work" style="background: var(--char2)">
+  <div class="gallery-header fade-in">
+    <div>
+      <div class="eyebrow">Recent work</div>
+      <h2 class="sh">Trucks in.<br>Running out.</h2>
+    </div>
+    <p style="font-size:.88rem;color:var(--dim);max-width:220px;text-align:right;line-height:1.6">Heavy vehicles serviced across Methven and Canterbury.</p>
+  </div>
+  <div class="gallery-grid fade-in">
+    <div class="g-item">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80&fit=crop" alt="Heavy truck being serviced — AIS Methven">
+      <div class="g-label">Engine Overhaul</div>
+    </div>
+    <div class="g-item">
+      <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=700&q=80&fit=crop" alt="Diesel engine repair — AIS Methven">
+      <div class="g-label">Diesel Repairs</div>
+    </div>
+    <div class="g-item">
+      <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=700&q=80&fit=crop" alt="Truck fleet — AIS Methven Methven">
+      <div class="g-label">Fleet Work</div>
+    </div>
+    <div class="g-item">
+      <img src="https://images.unsplash.com/photo-1537984822441-cff330075342?w=700&q=80&fit=crop" alt="Workshop — AIS Methven">
+      <div class="g-label">Workshop</div>
+    </div>
+    <div class="g-item">
+      <img src="https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=700&q=80&fit=crop" alt="Brake inspection — AIS Methven">
+      <div class="g-label">Brake Systems</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT STRIP -->
+<section id="about">
+  <div class="about-strip">
+    <div class="about-stat fade-in">
+      <div class="about-stat-n">55</div>
+      <div class="about-stat-l">Line Road, Methven</div>
+    </div>
+    <div class="about-divider"></div>
+    <div class="about-text-col fade-in">
+      <strong>Methven's trusted heavy vehicle specialists.</strong>
+      Based at 55 Line Road, AIS Methven is the go-to workshop for truck operators and fleet managers across Mid-Canterbury. When you need a repair done properly — without the runaround — Barry and the team deliver.
+    </div>
+    <div class="about-divider"></div>
+    <div class="about-stat fade-in">
+      <div class="about-stat-n">027</div>
+      <div class="about-stat-l">306 1193 · Call Barry</div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="reviews-top fade-in">
+    <div class="g-badge">
+      <div class="g-logo-row">
+        <svg width="15" height="15" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        Google Reviews
+      </div>
+      <div class="g-score">5.0</div>
+      <div class="g-stars">
+        <span class="g-star">★</span><span class="g-star">★</span><span class="g-star">★</span><span class="g-star">★</span><span class="g-star">★</span>
+      </div>
+      <div class="g-count">on Google</div>
+      <a href="#contact" class="review-btn" style="display:inline-flex;align-items:center;gap:.4rem;margin-top:.8rem">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        Leave a Review
+      </a>
+    </div>
+    <div class="reviews-intro">
+      <div class="eyebrow">What customers say</div>
+      <h2 class="sh">Relied on by<br>Canterbury operators.</h2>
+      <p>Truck operators, fleet managers and farmers across Mid-Canterbury keep coming back to AIS Methven. Here's what they say.</p>
+    </div>
+  </div>
+  <div class="reviews-grid fade-in">
+    <div class="rev-card">
+      <div class="rev-header">
+        <div class="rev-avatar" style="background:linear-gradient(135deg,#f97316,#ea6c0a)">T</div>
+        <div>
+          <div class="rev-name">Tony R.</div>
+          <div class="rev-stars"><span class="r-star">★</span><span class="r-star">★</span><span class="r-star">★</span><span class="r-star">★</span><span class="r-star">★</span></div>
+        </div>
+      </div>
+      <p class="rev-text">"Barry and the team sorted our truck out fast — engine was running rough and they had it diagnosed and back on the road same week. Wouldn't go anywhere else for our fleet work."</p>
+      <div class="rev-source">
+        <svg width="11" height="11" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        Google Review · Methven
+      </div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-header">
+        <div class="rev-avatar" style="background:linear-gradient(135deg,#1c2128,#303a47)">D</div>
+        <div>
+          <div class="rev-name">Dave M.</div>
+          <div class="rev-stars"><span class="r-star">★</span><span class="r-star">★</span><span class="r-star">★</span><span class="r-star">★</span><span class="r-star">★</span></div>
+        </div>
+      </div>
+      <p class="rev-text">"Straight-talking, honest pricing and quality work. Took our rig in for a COF and a brake overhaul — they picked up a few things and had it all sorted without any dramas. Highly recommend."</p>
+      <div class="rev-source">
+        <svg width="11" height="11" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        Google Review · Canterbury
+      </div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-header">
+        <div class="rev-avatar" style="background:linear-gradient(135deg,#252d38,#303a47)">S</div>
+        <div>
+          <div class="rev-name">Steve H.</div>
+          <div class="rev-stars"><span class="r-star">★</span><span class="r-star">★</span><span class="r-star">★</span><span class="r-star">★</span><span class="r-star">★</span></div>
+        </div>
+      </div>
+      <p class="rev-text">"Run a small transport business and AIS Methven handle all our servicing. Always professional, always on time. Barry knows his stuff and keeps us informed the whole way through."</p>
+      <div class="rev-source">
+        <svg width="11" height="11" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        Google Review · Methven
+      </div>
+    </div>
+  </div>
+  <div class="reviews-cta fade-in">
+    <a href="#contact" class="see-more">
+      Work with us →
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background: var(--char2)">
+  <div class="contact-grid">
+    <div class="contact-info fade-in">
+      <div class="eyebrow">Get in touch</div>
+      <h2 class="sh">Book a service<br>or get a quote.</h2>
+      <p>Fill in the form and Barry will get back to you promptly. Alternatively, give us a call directly — we're always happy to talk through what you need.</p>
+      <div class="contact-items">
+        <div class="c-item">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">Phone</div>
+            <a href="tel:0273061193" class="c-val">027 306 1193</a>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">✉️</div>
+          <div>
+            <div class="c-label">Email</div>
+            <a href="mailto:barry@ais.net.nz" class="c-val">barry@ais.net.nz</a>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">Location</div>
+            <span class="c-val" style="cursor:default">55 Line Road, Methven</span>
+            <div style="font-size:.78rem;color:var(--dim);margin-top:.15rem">Mid-Canterbury, New Zealand</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fade-in">
+      <div class="contact-form-wrap">
+        <div class="form-title">Send an enquiry</div>
+        <form action="https://api.staticforms.xyz/submit" method="post" id="contactForm">
+          <input type="hidden" name="apiKey" value="sf_768da8d33927e7f4f241d0a6">
+          <input type="hidden" name="subject" value="New enquiry — AIS Methven">
+          <input type="hidden" name="replyTo" value="@">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First name</label>
+              <input type="text" name="firstName" placeholder="John" required>
+            </div>
+            <div class="form-group">
+              <label>Last name</label>
+              <input type="text" name="lastName" placeholder="Smith" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="john@example.com" required>
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" name="phone" placeholder="027 000 0000">
+          </div>
+          <div class="form-group">
+            <label>Service needed</label>
+            <select name="service" required>
+              <option value="" disabled selected>Select a service…</option>
+              <option>Diesel Engine Repair / Overhaul</option>
+              <option>WOF / COF Inspection</option>
+              <option>Brake Service & Safety Check</option>
+              <option>Hydraulic System Repair</option>
+              <option>Fleet Servicing & Maintenance</option>
+              <option>Transmission / Gearbox</option>
+              <option>Emergency Repair</option>
+              <option>General Enquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea name="message" placeholder="Tell us about your vehicle and what you need…" required></textarea>
+          </div>
+          <button type="submit" class="form-submit" id="formBtn">Send Enquiry →</button>
+          <p class="form-note">Barry usually responds within a few hours.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="foot-brand">AIS Methven</div>
+    <div class="foot-copy">© 2025 AIS Methven · 55 Line Road, Methven · 027 306 1193</div>
+  </div>
+  <div class="foot-links">
+    <a href="#services">Services</a>
+    <a href="#work">Our Work</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const mobMenu = document.getElementById('mobMenu');
+hamburger.addEventListener('click', () => mobMenu.classList.toggle('open'));
+function closeMob() { mobMenu.classList.remove('open'); }
+
+// Fade-in
+const observer = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }),
+  { threshold: 0.08 }
+);
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Form
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('formBtn');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+  const data = {};
+  new FormData(this).forEach((v, k) => data[k] = v);
+  try {
+    const res = await fetch('https://api.staticforms.xyz/submit', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data)
+    });
+    const json = await res.json();
+    if (json.success) {
+      btn.textContent = '✓ Enquiry sent!';
+      btn.style.background = '#22c55e';
+      this.reset();
+    } else {
+      btn.textContent = 'Error — try again';
+      btn.style.background = '#ef4444';
+      btn.disabled = false;
+    }
+  } catch {
+    btn.textContent = 'Network error — try again';
+    btn.style.background = '#ef4444';
+    btn.disabled = false;
+  }
+});
+</script>
+</body>
+</html>
