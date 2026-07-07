@@ -234,14 +234,14 @@ section { padding: 5.5rem 6%; }
 .gallery-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; }
 .gallery-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
-  grid-template-rows: 280px 220px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 240px;
   gap: 1rem;
 }
-.g-item { border-radius: 14px; overflow: hidden; position: relative; }
+.g-item { border-radius: 14px; overflow: hidden; position: relative; background: var(--char3); }
 .g-item img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.82); transition: transform .5s; }
 .g-item:hover img { transform: scale(1.04); }
-.g-item:first-child { grid-row: 1 / 3; }
+.g-item:first-child { grid-row: span 2; }
 .g-label {
   position: absolute; bottom: 0; left: 0; right: 0;
   padding: 1.5rem 1.2rem .9rem;
@@ -435,7 +435,7 @@ footer {
     </div>
   </div>
   <div class="hero-right">
-    <img src="mainbackground.jpg" alt="AIS Methven workshop and trucks">
+    <img src="photos/ais-01.jpg" alt="Heavy truck up on the hoist in the AIS Methven workshop">
   </div>
   <div class="hero-fade"></div>
 </section>
@@ -467,7 +467,7 @@ footer {
   <div class="services-layout">
     <div class="fade-in">
       <div class="services-img">
-        <img src="truckworkinprogress.jpg" alt="Truck work in progress — AIS Methven">
+        <img src="photos/ais-08.jpg" alt="Trucks up on the hoists inside the AIS Methven workshop">
         <div class="services-img-badge">Methven's<br>Go-To Shop</div>
       </div>
     </div>
@@ -534,24 +534,36 @@ footer {
   </div>
   <div class="gallery-grid fade-in">
     <div class="g-item">
-      <img src="truckworkinprogress.jpg" alt="Truck work in progress — AIS Methven">
-      <div class="g-label">Truck Work</div>
+      <img src="photos/ais-05.jpg" alt="Truck in the AIS Methven workshop up on the hoist" loading="lazy">
+      <div class="g-label">In the Workshop</div>
     </div>
     <div class="g-item">
-      <img src="workshop.jpg" alt="Workshop — AIS Methven">
-      <div class="g-label">Workshop</div>
+      <img src="photos/ais-03.jpg" alt="Clutch and flywheel assembly being serviced" loading="lazy">
+      <div class="g-label">Clutch &amp; Driveline</div>
     </div>
     <div class="g-item">
-      <img src="apprenticemacatwork.jpg" alt="Apprentice mechanic at work — AIS Methven">
-      <div class="g-label">Apprentice at Work</div>
+      <img src="photos/ais-06.jpg" alt="Diesel engine block on the stand mid-rebuild" loading="lazy">
+      <div class="g-label">Engine Rebuilds</div>
     </div>
     <div class="g-item">
-      <img src="mainbackground.jpg" alt="AIS Methven workshop exterior">
-      <div class="g-label">The Shop</div>
+      <img src="photos/ais-19.jpg" alt="Transmission gear cluster removed for inspection" loading="lazy">
+      <div class="g-label">Transmissions</div>
     </div>
     <div class="g-item">
-      <img src="apprenticemacatwork.jpg" alt="Mechanic at work — AIS Methven">
-      <div class="g-label">Repairs</div>
+      <img src="photos/ais-02.jpg" alt="Heavy truck lifted by crane at AIS Methven" loading="lazy">
+      <div class="g-label">Heavy Lifts</div>
+    </div>
+    <div class="g-item">
+      <img src="photos/ais-15.jpg" alt="Classic International heavy trucks in the workshop" loading="lazy">
+      <div class="g-label">Heavy Vehicles</div>
+    </div>
+    <div class="g-item">
+      <img src="photos/ais-18.jpg" alt="Cylinder head and manifold stripped for reconditioning" loading="lazy">
+      <div class="g-label">Precision Work</div>
+    </div>
+    <div class="g-item">
+      <img src="photos/ais-17.jpg" alt="AIS Methven truck fleet lined up at the depot" loading="lazy">
+      <div class="g-label">On the Road</div>
     </div>
   </div>
 </section>
