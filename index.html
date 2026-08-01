@@ -153,6 +153,20 @@ h1.hero-h1 .accent { color: var(--red); }
   padding: .28rem .78rem; border-radius: 100px;
   background: rgba(220,38,38,.08); border: 1px solid rgba(220,38,38,.22); color: var(--redL);
 }
+/* hero review widget */
+.hero-rev {
+  margin-top: 2.4rem; max-width: 440px;
+  background: rgba(20,24,28,.55);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.1); border-radius: 14px;
+  padding: 1.15rem 1.35rem; box-shadow: 0 20px 46px rgba(0,0,0,.45);
+}
+.hero-rev-top { display: flex; align-items: center; gap: .6rem; margin-bottom: .6rem; }
+.hero-rev-stars { color: #FBBC05; letter-spacing: 2px; font-size: .95rem; }
+.hero-rev-badge { display: inline-flex; align-items: center; gap: .4rem; font-size: .72rem; color: var(--body); font-weight: 600; }
+.hero-rev-quote { font-size: .9rem; line-height: 1.6; color: #eef1ec; font-style: italic; min-height: 74px; transition: opacity .4s ease; }
+.hero-rev-name { margin-top: .55rem; font-size: .78rem; font-weight: 700; color: var(--redL); transition: opacity .4s ease; }
+.hero-rev.fading .hero-rev-quote, .hero-rev.fading .hero-rev-name { opacity: 0; }
 
 /* ── MARQUEE ── */
 .marquee {
@@ -423,6 +437,17 @@ footer {
         <span class="h-badge">24hr Breakdown Callout</span>
         <span class="h-badge">Fleet Servicing</span>
         <span class="h-badge">Methven Based</span>
+      </div>
+      <div class="hero-rev" id="heroRev">
+        <div class="hero-rev-top">
+          <span class="hero-rev-stars">★★★★★</span>
+          <span class="hero-rev-badge">
+            <svg width="13" height="13" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            Google Reviews
+          </span>
+        </div>
+        <p class="hero-rev-quote" id="heroRevQuote">"Barry and the team sorted our truck out fast, engine was running rough and they had it diagnosed and back on the road same week. Wouldn't go anywhere else for our fleet work."</p>
+        <div class="hero-rev-name" id="heroRevName">Tony R. · Methven</div>
       </div>
     </div>
   </div>
@@ -726,6 +751,29 @@ const observer = new IntersectionObserver(
   { threshold: 0.08 }
 );
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Rotating hero review widget (client-provided reviews only)
+(function(){
+  var reviews = [
+    { q:'"Barry and the team sorted our truck out fast, engine was running rough and they had it diagnosed and back on the road same week. Wouldn\'t go anywhere else for our fleet work."', n:'Tony R. · Methven' },
+    { q:'"Straight-talking, honest pricing and quality work. Took our rig in for a COF and a brake overhaul, they picked up a few things and had it all sorted without any dramas. Highly recommend."', n:'Dave M. · Canterbury' },
+    { q:'"Run a small transport business and AIS Methven handle all our servicing. Always professional, always on time. Barry knows his stuff and keeps us informed the whole way through."', n:'Steve H. · Methven' }
+  ];
+  var w = document.getElementById('heroRev'),
+      q = document.getElementById('heroRevQuote'),
+      n = document.getElementById('heroRevName');
+  if (!w || !q || !n) return;
+  var i = 0;
+  setInterval(function(){
+    w.classList.add('fading');
+    setTimeout(function(){
+      i = (i + 1) % reviews.length;
+      q.textContent = reviews[i].q;
+      n.textContent = reviews[i].n;
+      w.classList.remove('fading');
+    }, 420);
+  }, 5000);
+})();
 </script>
 </body>
 </html>
